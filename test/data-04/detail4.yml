@@ -1,0 +1,4 @@
+name: detail4
+parent:
+  - master
+  - detail3
