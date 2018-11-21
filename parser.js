@@ -10,27 +10,29 @@ const dump = {
   "yml": yaml.safeDump,
 }
 
-const proxy = action => { 
-  { 
-    "parse": parseProxy,
-    "dump": dumpProxy
-  }
-
+const proxy = { 
+    "parse": parse,
+    "dump": dump,
 }
 
 // Parse files into user format via proxy
 const load = (action, format) => {
 
-  if (!proxy[format]) {
+  if (!proxy[action]) {
+    console.log(action + ' is not supported ... yet!');
+    process.exit(0);
+  }
+
+  if (!proxy[action][format]) {
     console.log(format + ' is not supported ... yet!');
     process.exit(0);
   }
 
-  return proxy[format];
+  return proxy[action][format];
 
 }
 
-exports.execute = async function(format, files) {
-  const parser = load(format);
+exports.execute = async function(action, format, files) {
+  const parser = load(action, format);
   return await Promise.all(files.map(f => parser(f)));
 }
