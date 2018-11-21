@@ -27,5 +27,5 @@ exports.execute = (tables) => {
     }
   }
 
-  return sorted
+  return { order: sorted }
 }
