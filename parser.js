@@ -33,6 +33,9 @@ const load = (action, format) => {
 }
 
 exports.execute = async function(action, format, files) {
+  if (!Array.isArray(files)) {
+    files = [files]
+  }
   const parser = load(action, format);
   return await Promise.all(files.map(f => parser(f)));
 }
