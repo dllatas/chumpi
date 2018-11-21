@@ -5,11 +5,10 @@ const sort = require('./sort');
 
 async function teseo(options) {
   const files = await read.files(options.dir)
-  console.log(files)
-  const tables = await parser.execute(options.format, files);
-  console.log(tables)
+  const tables = await parser.execute('parse', options.format, files);
   const sorted = sort.execute(tables)
   console.log(sorted)
+  return sorted
 }
 
 module.exports = teseo
