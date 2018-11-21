@@ -4,10 +4,10 @@ const teseo = require('../index')
 async function test() {
 
   const dirList = [
-    'data-01',
-    'data-02',
-    'data-03',
-    'data-04',
+    '01',
+    '02',
+    '03',
+    '04',
   ]
   
   const result = await Promise.all(  
