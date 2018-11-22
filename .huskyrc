@@ -1,5 +1,6 @@
 {
   "hooks": {
+    //"pre-push": "npm run build"
     "pre-commit": "npm run build"
   }
 }
