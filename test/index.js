@@ -28,10 +28,16 @@ async function test(format) {
       ),
   );
 
-  // Compare results
-  for (let i = 0; i < real.length; i += 1) {
-    assert.deepStrictEqual(expected[i], real[i].order);
-  }
+  return real;
 }
 
-test('yaml');
+test('yaml')
+  .then((real) => {
+    for (let i = 0; i < real.length; i += 1) {
+      assert.deepStrictEqual(expected[i], real[i].order);
+    }
+  })
+  .catch((e) => {
+    console.log(e);
+    process.exit(1);
+  });
