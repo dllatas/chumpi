@@ -4,11 +4,18 @@
   "description": "find its way out of the labyrinth",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "lint": "./node_modules/.bin/eslint --fix .",
+    "build": "npm run lint && npm run test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "js-yaml": "^3.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
   }
 }
