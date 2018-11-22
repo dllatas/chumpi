@@ -13,8 +13,11 @@ Labyrinth, similar to the library finding the order of the files.
 
 ### Installation
 
-- Nodejs v10.0.0+ is needed. Teseo has not been tested against earlier versions.
-- Clone the repo `https://github.com/dllatas/teseo.git`
+Nodejs v10.0.0+ is needed. Teseo has not been tested against earlier versions.
+
+1. `git clone https://github.com/dllatas/teseo.git`
+2. `cd teseo`
+3. `npm install`
 
 ### Usage
 
