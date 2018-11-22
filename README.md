@@ -27,7 +27,8 @@ Nodejs v10.0.0+ is needed. Teseo has not been tested against earlier versions.
 
 #### CLI
 ```bash
-node teseo dir=/home/db-schema format=yaml
+cd teseo
+node teseo-cli dir=/home/db-schema format=yaml
 
 ```
 
@@ -54,7 +55,6 @@ await teseo({
 - Once approved, merge stable to release
 
 ### Roadmap
-- Rename files and some functions
 - Add more tests
 - User can define property names
 - Support more config files

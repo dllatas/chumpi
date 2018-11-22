@@ -13,16 +13,18 @@ const list = async function list(dir) {
   return files;
 };
 
-// Read files
+// Read file
 exports.read = async function files(dir) {
   const filenames = await list(dir);
   return Promise.all(filenames.map(f => readFilePromise(f)));
 };
 
-// Write into files
+// Write into file
 exports.write = async function write(content, dest = 'output') {
   if (Array.isArray(content)) {
     content = content[0];
   }
-  await writeFilePromise(`${path.dirname(__dirname)}/${dest}/${Date.now().toString()}`, content);
+  const timestamp = Date.now().toString()
+  console.log(`Open file at: ${path.dirname(__dirname)}/${dest}/${timestamp}`) 
+  await writeFilePromise(`${path.dirname(__dirname)}/${dest}/${timestamp}`, content);
 };
