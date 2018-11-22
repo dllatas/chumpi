@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node test",
     "lint": "./node_modules/.bin/eslint --fix .",
-    "build": "npm run lint && npm run test"
+    "install": "mkdir output && npm i",
+    "build": "mkdir -p output && npm run lint && npm run test"
   },
   "author": "",
   "license": "ISC",
