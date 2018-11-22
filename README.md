@@ -54,8 +54,8 @@ await teseo({
 - Once approved, merge stable to release
 
 ### Roadmap
-- Set up Husky
 - Rename files and some functions
+- Add more tests
 - User can define property names
 - Support more config files
 - Add Babel??? :thinking:

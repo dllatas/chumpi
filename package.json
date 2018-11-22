@@ -1,6 +1,6 @@
 {
   "name": "teseo",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "find its way out of the labyrinth",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,8 @@
     "install": "mkdir output && npm i",
     "build": "mkdir -p output && npm run lint && npm run test"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Daniel Spiers",
+  "license": "GNU",
   "dependencies": {
     "js-yaml": "^3.12.0"
   },
