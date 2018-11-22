@@ -1,5 +1,5 @@
-const teseo = require('../index');
-const io = require('./io');
+const teseo = require('./index');
+const io = require('./src/io');
 
 async function teseoCli(input) {
   const options = io.capture(input);
