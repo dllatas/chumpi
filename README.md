@@ -1,5 +1,5 @@
 # Teseo
-
+ 
 Teseo reads a directory that contains a relational db schema defined in several config files. 
 
 Each config file defines a table, therefore it has a property that has a name and another optional 
@@ -21,12 +21,48 @@ Nodejs v10.0.0+ is needed. Teseo has not been tested against earlier versions.
 
 ### Usage
 
+#### Properties
+- dir: mandatory
+- format: mandatory
+
+#### CLI
+```bash
+node teseo dir=/home/db-schema format=yaml
+
+```
+
+#### API
+```javascript
+const teseo = require('teseo');
+
+await teseo({
+  dir: '/home/db-schema',
+  format: 'yaml',
+})
+
+```
+ 
+### Contributing
+- Clone the repo
+- Fetch
+- `git checkout release`
+- `git checkout -b ${relevant-name}/working`
+- code!
+- add test to the code!
+- Create PR between release and working
+- Fix merge conflicts, if any
+- Once approved, merge stable to release
+
 ### Roadmap
+- Set up Husky
+- Rename files and some functions
 - User can define property names
 - Support more config files
+- Add Babel??? :thinking:
 - Publish it to npm
 
 ### License
+[See License](/LICENSE)
 
 ### Project Status
 Work in Progress
