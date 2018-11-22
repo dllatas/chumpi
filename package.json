@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node test",
     "lint": "./node_modules/.bin/eslint --fix .",
-    "install": "mkdir output && npm i",
+    "diff-lint": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then eslint --fix $LIST; fi",
+    "install": "mkdir output && npm i && npm run test",
     "build": "mkdir -p output && npm run lint && npm run test"
   },
   "author": "Daniel Spiers",
