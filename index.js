@@ -1,13 +1,13 @@
-const read = require('./read');
-const parser = require('./parser');
-const sort = require('./sort');
+const file = require('./src/file');
+const conversion = require('./src/conversion');
+const sort = require('./src/sort');
 
 async function teseo(options) {
-  const files = await read.files(options.dir);
-  const tables = await parser.execute('parse', options.format, files);
+  const files = await file.read(options.dir);
+  const tables = await conversion.execute('parse', options.format, files);
   const sorted = sort.execute(tables);
-  const dumped = await parser.execute('dump', options.format, sorted);
-  await read.write(dumped);
+  const dumped = await conversion.execute('dump', options.format, sorted);
+  await file.write(dumped);
   return sorted;
 }
 

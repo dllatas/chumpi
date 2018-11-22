@@ -14,7 +14,7 @@ const list = async function list(dir) {
 };
 
 // Read files
-exports.files = async function files(dir) {
+exports.read = async function files(dir) {
   const filenames = await list(dir);
   return Promise.all(filenames.map(f => readFilePromise(f)));
 };
@@ -24,5 +24,5 @@ exports.write = async function write(content, dest = 'output') {
   if (Array.isArray(content)) {
     content = content[0];
   }
-  await writeFilePromise(`${__dirname}/${dest}/${Date.now().toString()}`, content);
+  await writeFilePromise(`${path.dirname(__dirname)}/${dest}/${Date.now().toString()}`, content);
 };

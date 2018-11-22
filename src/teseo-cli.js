@@ -1,9 +1,9 @@
-const teseo = require('./index');
+const teseo = require('../index');
 const io = require('./io');
 
-async function cli(input) {
+async function teseoCli(input) {
   const options = io.capture(input);
   await teseo(options);
 }
 
-cli(process.argv);
+teseoCli(process.argv);
