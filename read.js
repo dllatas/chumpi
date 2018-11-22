@@ -20,9 +20,9 @@ exports.files = async function files(dir) {
 };
 
 // Write into files
-exports.write = async function write(dest, content) {
+exports.write = async function write(content, dest = 'output') {
   if (Array.isArray(content)) {
     content = content[0];
   }
-  await writeFilePromise(`${__dirname}/${dest}${Date.now().toString()}`, content);
+  await writeFilePromise(`${__dirname}/${dest}/${Date.now().toString()}`, content);
 };
