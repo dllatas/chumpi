@@ -17,7 +17,7 @@ Nodejs v10.0.0+ is needed. Teseo has not been tested against earlier versions.
 
 1. `git clone https://github.com/dllatas/teseo.git`
 2. `cd teseo`
-3. `npm install`
+3. `npm start`
 
 ### Usage
 
