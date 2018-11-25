@@ -6,8 +6,6 @@ async function teseo(options) {
   const files = await file.read(options.dir);
   const tables = await conversion.execute('parse', options.format, files);
   const sorted = sort.execute(tables);
-  const dumped = await conversion.execute('dump', options.format, sorted);
-  await file.write(dumped);
   return sorted;
 }
 
