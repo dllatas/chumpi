@@ -4,7 +4,7 @@
   "description": "find its way out of the labyrinth",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --recursive",
     "lint": "./node_modules/.bin/eslint --fix .",
     "diff-lint": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint --fix $LIST; fi",
     "start": "npm install && mkdir -p ./output",
