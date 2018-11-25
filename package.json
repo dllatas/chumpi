@@ -4,7 +4,7 @@
   "description": "find its way out of the labyrinth",
   "main": "index.js",
   "scripts": {
-    "test": "node test",
+    "test": "mocha",
     "lint": "./node_modules/.bin/eslint --fix .",
     "diff-lint": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint --fix $LIST; fi",
     "start": "npm install && mkdir -p ./output",
@@ -16,9 +16,11 @@
     "js-yaml": "^3.12.0"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "husky": "^1.2.0"
+    "husky": "^1.2.0",
+    "mocha": "^5.2.0"
   }
 }
