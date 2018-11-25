@@ -52,7 +52,7 @@ await teseo({
 - add test to the code!
 - Create PR between release and working
 - Fix merge conflicts, if any
-- Once approved, merge stable to release
+- Once approved, merge working branch into release branch
 
 ### Roadmap
 - Add more tests
