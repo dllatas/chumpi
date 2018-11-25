@@ -24,7 +24,7 @@ exports.write = async function write(content, dest = 'output') {
   if (Array.isArray(content)) {
     content = content[0];
   }
-  const timestamp = Date.now().toString()
-  console.log(`Open file at: ${path.dirname(__dirname)}/${dest}/${timestamp}`) 
+  const timestamp = Date.now().toString();
+  console.log(`Open file at: ${path.dirname(__dirname)}/${dest}/${timestamp}`);
   await writeFilePromise(`${path.dirname(__dirname)}/${dest}/${timestamp}`, content);
 };

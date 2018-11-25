@@ -3,16 +3,12 @@ const assert = require('assert').strict;
 const teseo = require('../index');
 
 const expected = [
-  ['master', 'detail'],
-  ['master', 'detail', 'detail2'],
   ['master', 'detail', 'detail2'],
   ['master', 'detail', 'detail2', 'detail3', 'detail4'],
 ];
 
 async function test(format) {
   const dirList = [
-    '01',
-    '02',
     '03',
     '04',
   ];
