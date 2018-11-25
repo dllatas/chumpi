@@ -1,16 +1,15 @@
 const options = {
-    dir: '',
-    format: '',
+  dir: '',
+  format: '',
 };
 
 const optionsKey = Object.keys(options);
 
 // Capture input from shell
 const capture = (input) => {
-
-  const captured = {}
-  const elementsToIgnore = 2
-  const elementsInOption = 2
+  const captured = {};
+  const elementsToIgnore = 2;
+  const elementsInOption = 2;
 
   for (let i = elementsToIgnore; i < input.length; i += 1) {
     const option = input[i].split('=');
@@ -29,5 +28,5 @@ const capture = (input) => {
 module.exports = {
   capture,
   options,
-  optionsKey
-}
+  optionsKey,
+};
