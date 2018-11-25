@@ -1,0 +1,9 @@
+extends: airbnb-base
+rules:
+  no-continue: off
+  prefer-destructuring:
+    - error
+    - object: true
+      array: false
+  no-param-reassign: off
+  no-restricted-syntax: off

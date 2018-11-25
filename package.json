@@ -1,14 +1,24 @@
 {
   "name": "teseo",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "find its way out of the labyrinth",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test",
+    "lint": "./node_modules/.bin/eslint --fix .",
+    "diff-lint": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint --fix $LIST; fi",
+    "start": "npm install && mkdir -p ./output",
+    "build": "rm -rf ./node_modules ./output && npm run start && npm test && npm run lint"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Daniel Spiers",
+  "license": "GNU",
   "dependencies": {
     "js-yaml": "^3.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "husky": "^1.2.0"
   }
 }
