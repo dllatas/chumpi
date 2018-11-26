@@ -1,4 +1,4 @@
-const IsParentIncluded = (sorted, parent) => {
+const isParentIncluded = (sorted, parent) => {
   for (const p of parent) {
     if (!sorted.includes(p)) {
       return false;
@@ -7,7 +7,7 @@ const IsParentIncluded = (sorted, parent) => {
   return true;
 };
 
-exports.execute = (tables) => {
+const execute = (tables) => {
   // Funny part, solving the dependency
   // Dont assume a starting point: let's check for all the tables without a parent
   const sorted = tables.filter(t => !t.parent).map(t => t.name);
@@ -18,7 +18,7 @@ exports.execute = (tables) => {
   // sortedTables has length == 0
   while (unsorted.length > 0) {
     for (const us of unsorted) {
-      if (IsParentIncluded(sorted, us.parent)) {
+      if (isParentIncluded(sorted, us.parent)) {
         // Push element to sorted array
         sorted.push(us.name);
         // Remove element from unsorted
@@ -28,4 +28,9 @@ exports.execute = (tables) => {
   }
 
   return { order: sorted };
+};
+
+module.exports = {
+  isParentIncluded,
+  execute,
 };
