@@ -3,9 +3,11 @@ const conversion = require('./src/conversion');
 const sort = require('./src/sort');
 
 async function teseo(options) {
+  // TODO: validate that options have all the props needed in the right type
   const files = await file.read(options.dir);
   const tables = await conversion.execute('parse', options.format, files);
-  const sorted = sort.execute(tables);
+  // TODO: validate that props name always exist
+  const sorted = sort.execute(tables, options.parent, options.name);
   return sorted;
 }
 
