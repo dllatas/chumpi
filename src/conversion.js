@@ -3,11 +3,13 @@ const yaml = require('js-yaml');
 const parse = {
   yaml: yaml.load,
   yml: yaml.load,
+  json: JSON.parse,
 };
 
 const dump = {
   yaml: yaml.safeDump,
   yml: yaml.safeDump,
+  json: JSON.stringify,
 };
 
 const proxy = {
