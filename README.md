@@ -52,11 +52,11 @@ await teseo({
 - add test to the code!
 - Create PR between release and working
 - Fix merge conflicts, if any
-- Once approved, merge working branch into release branch
+- Wait for review!
 
 ### Roadmap
-- Add more tests
 - User can define property names
+- Validate input
 - Support more config files
 - Add Babel??? :thinking:
 - Publish it to npm
