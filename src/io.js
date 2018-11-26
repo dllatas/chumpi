@@ -1,6 +1,8 @@
 const options = {
   dir: '',
   format: '',
+  parent: '',
+  name: '',
 };
 
 const optionsKey = Object.keys(options);
