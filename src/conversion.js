@@ -18,22 +18,25 @@ const proxy = {
 // Parse files into user format via proxy
 const load = (action, format) => {
   if (!proxy[action]) {
-    console.log(`${action} is not supported ... yet!`);
-    process.exit(0);
+    throw new Error(`${action} is not supported ... yet!`);
   }
 
   if (!proxy[action][format]) {
-    console.log(`${format} is not supported ... yet!`);
-    process.exit(0);
+    throw new Error(`${format} is not supported ... yet!`);
   }
 
   return proxy[action][format];
 };
 
-exports.execute = async function execute(action, format, files) {
+const execute = async function execute(action, format, files) {
   if (!Array.isArray(files)) {
     files = [files];
   }
   const parser = load(action, format);
   return Promise.all(files.map(f => parser(f)));
+};
+
+module.exports = {
+  load,
+  execute,
 };
