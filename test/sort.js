@@ -16,4 +16,11 @@ describe('sort module test suite', () => {
     const actual = sort.execute(tables);
     assert.deepEqual(actual, expected);
   });
+
+  it('sort returns sorted when there are no unsorted tables', () => {
+    const tables = [{ name: 'master' }, { name: 'neo' }, { name: 'detail' }];
+    const expected = { order: ['master', 'detail', 'neo'] };
+    const actual = sort.execute(tables);
+    assert.sameMembers(actual.order, expected.order);
+  });
 });
