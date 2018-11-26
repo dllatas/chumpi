@@ -14,17 +14,37 @@ const list = async function list(dir) {
 };
 
 // Read file
-exports.read = async function files(dir) {
+const read = async function read(dir) {
   const filenames = await list(dir);
   return Promise.all(filenames.map(f => readFilePromise(f)));
 };
 
+const makeFilename = (dest, format) => {
+  const timestamp = Date.now().toString();
+  const filename = `${path.dirname(__dirname)}/${dest}/${timestamp}.${format}`;
+  return filename;
+};
+
+const makeDirname = (dest) => {
+  const dirname = `${path.dirname(__dirname)}/${dest}`;
+  return dirname;
+};
 // Write into file
-exports.write = async function write(content, dest = 'output') {
+const write = async function write(content, format, options = {}) {
+  const { dest = 'output' } = options;
   if (Array.isArray(content)) {
     content = content[0];
   }
-  const timestamp = Date.now().toString();
-  console.log(`Open file at: ${path.dirname(__dirname)}/${dest}/${timestamp}`);
-  await writeFilePromise(`${path.dirname(__dirname)}/${dest}/${timestamp}`, content);
+  const filename = makeFilename(dest, format);
+  await writeFilePromise(filename, content);
+  return filename;
+};
+
+module.exports = {
+  list,
+  read,
+  write,
+  readFilePromise,
+  makeFilename,
+  makeDirname,
 };
