@@ -22,8 +22,10 @@ Nodejs v10.0.0+ is needed. Teseo has not been tested against earlier versions.
 ### Usage
 
 #### Properties
-- dir: mandatory
-- format: mandatory
+- dir: mandatory. string.
+- format: mandatory. string.
+- parent: optional. default = 'parent'. string.
+- name: optional. default = 'name'. string.
 
 #### CLI
 ```bash
@@ -55,8 +57,8 @@ await teseo({
 - Wait for review!
 
 ### Roadmap
-- User can define property names
 - Validate input
+- Rename parent argument
 - Support more config files
 - Add Babel??? :thinking:
 - Publish it to npm
