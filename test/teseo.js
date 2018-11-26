@@ -3,7 +3,7 @@ const path = require('path');
 const { assert } = require('chai');
 const teseo = require('../index');
 
-describe('Teseo returns the proper result for some basic cases in YAML format', () => {
+describe('teseo basic cases suite', () => {
   const yaml = 'yaml';
 
   it('Parent with one child', async () => {
