@@ -57,6 +57,8 @@ await teseo({
 - Wait for review!
 
 ### Roadmap
+- Allow for nested property to be used as name and dependencies
+- Add dest folder parameter
 - Validate input
 - Rename parent argument
 - Support more config files
