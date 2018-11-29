@@ -1,5 +1,5 @@
 Case:
-  One parent
+  One master
   One children
 
 Result:

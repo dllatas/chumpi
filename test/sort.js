@@ -5,13 +5,13 @@ const sort = require('../src/sort');
 describe('sort module test suite', () => {
   it('isParentIncluded returns false', () => {
     const sorted = ['master', 'detail'];
-    const parent = ['neo'];
-    const actual = sort.isParentIncluded(sorted, parent);
+    const master = ['neo'];
+    const actual = sort.isParentIncluded(sorted, master);
     assert.isFalse(actual);
   });
 
-  it('sort discards a child without parent in sort', () => {
-    const tables = [{ name: 'master' }, { name: 'neo', parent: ['detail'] }, { name: 'detail', parent: ['master'] }];
+  it('sort discards a child without master in sort', () => {
+    const tables = [{ name: 'master' }, { name: 'neo', master: ['detail'] }, { name: 'detail', master: ['master'] }];
     const expected = { order: ['master', 'detail', 'neo'] };
     const actual = sort.execute(tables);
     assert.deepEqual(actual, expected);

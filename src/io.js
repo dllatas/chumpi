@@ -1,7 +1,7 @@
 const options = {
   dir: '',
   format: '',
-  parent: '',
+  master: '',
   name: '',
 };
 

@@ -3,10 +3,10 @@
 Teseo reads a directory that contains a relational db schema defined in several config files. 
 
 Each config file defines a table, therefore it has a property that has a name and another optional 
-property in case the table has parent tables.
+property in case the table has master tables.
 
 Teseo will provide the order in which the tables should be created in a db to avoid issues around
-a children not having a parent.
+a detail not having a master.
 
 Teseo is the spanish name for the mythical greek king Theseus. He managed to find his way in the 
 Labyrinth, similar to the library finding the order of the files.
@@ -24,7 +24,7 @@ Nodejs v10.0.0+ is needed. Teseo has not been tested against earlier versions.
 #### Properties
 - dir: mandatory. string.
 - format: mandatory. string.
-- parent: optional. default = 'parent'. string.
+- master: optional. default = 'master'. string.
 - name: optional. default = 'name'. string.
 
 #### CLI
@@ -60,7 +60,6 @@ await teseo({
 - Allow for nested property to be used as name and dependencies
 - Add dest folder parameter
 - Validate input
-- Rename parent argument
 - Support more config files
 - Add Babel??? :thinking:
 - Publish it to npm
