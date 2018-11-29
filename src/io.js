@@ -1,11 +1,4 @@
-const options = {
-  dir: '',
-  format: '',
-  master: '',
-  name: '',
-};
-
-const optionsKey = Object.keys(options);
+const validation = require('./validation');
 
 // Capture input from shell
 const capture = (input) => {
@@ -19,7 +12,7 @@ const capture = (input) => {
       continue;
     }
 
-    if (optionsKey.includes(option[0])) {
+    if (validation.optionsKey.includes(option[0])) {
       captured[option[0]] = option[1];
     }
   }
@@ -29,6 +22,4 @@ const capture = (input) => {
 
 module.exports = {
   capture,
-  options,
-  optionsKey,
 };
