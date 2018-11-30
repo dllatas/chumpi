@@ -6,8 +6,8 @@ const file = require('./src/file');
 async function teseoCli(input) {
   const options = io.capture(input);
   const result = await teseo(options);
-  const dumped = await conversion.execute('dump', options.format, result.order);
-  await file.write(dumped);
+  const dumped = await conversion.execute('dump', options.format, result);
+  await file.write(dumped, options);
 }
 
 teseoCli(process.argv);
