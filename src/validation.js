@@ -15,6 +15,10 @@ const options = {
     mandatory: false,
     type: 'string',
   },
+  dest: {
+    mandatory: false,
+    type: 'string',
+  },
 };
 
 const optionsKey = Object.keys(options);
