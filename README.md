@@ -26,6 +26,7 @@ Nodejs v10.0.0+ is needed. Teseo has not been tested against earlier versions.
 - format: mandatory. string.
 - master: optional. default = 'master'. string.
 - name: optional. default = 'name'. string.
+- dest: optional. default = 'output'. string.
 
 #### CLI
 ```bash
@@ -58,8 +59,6 @@ await teseo({
 
 ### Roadmap
 - Allow for nested property to be used as name and dependencies
-- Add dest folder parameter
-- Validate input
 - Support more config files
 - Add Babel??? :thinking:
 - Publish it to npm
