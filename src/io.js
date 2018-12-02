@@ -1,4 +1,26 @@
-const validation = require('./validation');
+const schema = {
+  dir: {
+    mandatory: true,
+    type: 'string',
+  },
+  format: {
+    mandatory: true,
+    type: 'string',
+  },
+  master: {
+    mandatory: false,
+    type: 'string',
+  },
+  name: {
+    mandatory: false,
+    type: 'string',
+  },
+  dest: {
+    mandatory: false,
+    type: 'string',
+  },
+};
+
 
 // Capture input from shell
 const capture = (input) => {
@@ -12,7 +34,7 @@ const capture = (input) => {
       continue;
     }
 
-    if (validation.optionsKey.includes(option[0])) {
+    if (Object.keys(schema).includes(option[0])) {
       captured[option[0]] = option[1];
     }
   }
@@ -22,4 +44,5 @@ const capture = (input) => {
 
 module.exports = {
   capture,
+  schema,
 };
