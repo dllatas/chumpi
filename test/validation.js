@@ -1,13 +1,14 @@
 const { describe, it } = require('mocha');
 const { assert } = require('chai');
 const validation = require('../src/validation');
+const io = require('../src/io');
 
 describe('validation module test suite', () => {
   it('enforce throws when mandatory option is not defined. ie format', () => {
     const options = {
       dir: '/tmp/schema',
     };
-    const enforced = () => { validation.enforce(options); };
+    const enforced = () => { validation.enforce(options, io.schema); };
     assert.throws(enforced);
   });
 
@@ -16,7 +17,7 @@ describe('validation module test suite', () => {
       dir: '/tmp/schema',
       format: '',
     };
-    const enforced = () => { validation.enforce(options); };
+    const enforced = () => { validation.enforce(options, io.schema); };
     assert.throws(enforced);
   });
 
@@ -26,7 +27,7 @@ describe('validation module test suite', () => {
       format: 'json',
       master: 5,
     };
-    const enforced = () => { validation.enforce(options); };
+    const enforced = () => { validation.enforce(options, io.schema); };
     assert.throws(enforced);
   });
 });

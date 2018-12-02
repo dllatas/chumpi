@@ -23,4 +23,17 @@ describe('sort module test suite', () => {
     const actual = sort.execute(tables);
     assert.sameMembers(actual.order, expected.order);
   });
+
+  it('get returns the name property from a nested object', () => {
+    const source = {
+      everything: {
+        is: {
+          allright: 'name',
+        },
+      },
+    };
+    const actual = sort.get(source, 'everything.is.allright');
+    const expected = 'name';
+    assert.strictEqual(actual, expected);
+  });
 });
