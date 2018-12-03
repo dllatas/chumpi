@@ -37,7 +37,7 @@ describe('validation module test suite', () => {
       format: 'json',
       master: 5,
     };
-    const legit = () => validation.isLegit(options)
-    assert.throws(legit)
+    const legit = () => validation.isLegit(options);
+    assert.throws(legit);
   });
 });
