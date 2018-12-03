@@ -58,6 +58,8 @@ await teseo({
 - Wait for review!
 
 ### Roadmap
+- Add logging
+- Write README for each module
 - Improve CLI 
 - Support more config files
 - Add Babel??? :thinking:
