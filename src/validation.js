@@ -54,4 +54,5 @@ const enforce = (input, schema) => {
 
 module.exports = {
   enforce,
+  isLegit,
 };

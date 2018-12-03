@@ -30,4 +30,14 @@ describe('validation module test suite', () => {
     const enforced = () => { validation.enforce(options, io.schema); };
     assert.throws(enforced);
   });
+
+  it('isLegit throws when a schema is not defined', () => {
+    const options = {
+      dir: '/tmp/schema',
+      format: 'json',
+      master: 5,
+    };
+    const legit = () => validation.isLegit(options)
+    assert.throws(legit)
+  });
 });
