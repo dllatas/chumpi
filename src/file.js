@@ -3,19 +3,22 @@ const path = require('path');
 const util = require('util');
 
 const readDirPromise = util.promisify(fs.readdir);
+const mkDirPromise = util.promisify(fs.mkdir);
+const removeDirPromise = util.promisify(fs.rmdir);
 const readFilePromise = util.promisify(fs.readFile);
 const writeFilePromise = util.promisify(fs.writeFile);
-const mkDirPromise = util.promisify(fs.mkdir);
+const removeFilePromise = util.promisify(fs.unlink);
 
+const DEFAULT_DEST = '/tmp/teseo';
 // Read filenames from the dir option
-const list = async function list(dir) {
+const list = async (dir) => {
   let files = await readDirPromise(dir);
   files = files.map(f => path.join(dir, f));
   return files;
 };
 
 // Read file
-const read = async function read(dir) {
+const read = async (dir) => {
   const filenames = await list(dir);
   return Promise.all(filenames.map(f => readFilePromise(f)));
 };
@@ -26,35 +29,31 @@ const makeFilename = (dest, format) => {
   return filename;
 };
 
-const createDir = async (dirname) => {
-  const dirCreated = await mkDirPromise(dirname, { recursive: true });
-  if (!dirCreated) {
-    return;
-  }
-  if (dirCreated.code === 'EEXIST') {
-    return;
-  }
-  throw dirCreated;
-};
-
 const makeDirname = (dest) => {
-  if (path.isAbsolute(dest)) {
-    return dest;
+  if (DEFAULT_DEST === dest) {
+    return DEFAULT_DEST;
   }
-  const dirname = `${path.dirname(__dirname)}/${dest}`;
+  const dirname = path.join(DEFAULT_DEST, dest);
   return dirname;
 };
+
+const createDir = async (dest, options = {}) => {
+  const { recursive = true } = options;
+  const dirname = makeDirname(dest);
+  await mkDirPromise(dirname, { recursive });
+  return dirname;
+};
+
 // Write into file
 const write = async function write(content, options) {
-  const { format, dest = 'output' } = options;
+  const { format, dest = DEFAULT_DEST } = options;
   if (Array.isArray(content)) {
     content = content[0];
   }
-  const dirname = makeDirname(dest);
-  await createDir(dirname);
+  const dirname = await createDir(dest);
   const filename = makeFilename(dirname, format);
   await writeFilePromise(filename, content);
-  return filename;
+  return { dirname, filename };
 };
 
 module.exports = {
@@ -64,4 +63,7 @@ module.exports = {
   readFilePromise,
   makeFilename,
   makeDirname,
+  createDir,
+  removeFilePromise,
+  removeDirPromise,
 };
