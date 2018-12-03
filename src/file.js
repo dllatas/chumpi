@@ -29,7 +29,11 @@ const makeFilename = (dest, format) => {
   return filename;
 };
 
-const makeDirname = (dest) => {
+const makeDirname = (dest, options = {}) => {
+  const { absolute = false } = options;
+  if (absolute && path.isAbsolute(dest)) {
+    return dest;
+  }
   if (DEFAULT_DEST === dest) {
     return DEFAULT_DEST;
   }

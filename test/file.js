@@ -40,6 +40,12 @@ describe('file module test suite', () => {
     await file.removeFilePromise(filename);
   });
 
+  it('makeDirname with absolute path', async () => {
+    const expected = '/absolute';
+    const actual = file.makeDirname('/absolute', { absolute: true });
+    assert.strictEqual(actual, expected);
+  });
+
   it('dest folder is not the default', async () => {
     const actual = { test: true };
     const dest = 'no-default-dest';
@@ -51,7 +57,7 @@ describe('file module test suite', () => {
     await file.removeDirPromise(dirname);
   });
 
-  it('create two foler should not throw an error', async () => {
+  it('create two folders should not throw an error', async () => {
     const dest = 'eexist-dest';
     const dirname = await file.createDir(dest);
     const dirnameError = await file.createDir(dest);
