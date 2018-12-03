@@ -58,7 +58,7 @@ await teseo({
 - Wait for review!
 
 ### Roadmap
-- Allow for nested property to be used as name and dependencies
+- Improve CLI 
 - Support more config files
 - Add Babel??? :thinking:
 - Publish it to npm
