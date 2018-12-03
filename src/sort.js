@@ -35,7 +35,7 @@ const get = (source, props, options = {}) => {
   const _props = props.split(delimiter);
   const retrieved = retrieve(source, _props);
   if (mandatory && !retrieved) {
-    throw new Error(`The id ${props}did not found a value.`);
+    throw new Error(`The id ${props} did not found a value.`);
   }
   return retrieved;
 };
@@ -80,4 +80,5 @@ module.exports = {
   isParentIncluded,
   execute,
   get,
+  analyzer,
 };

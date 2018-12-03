@@ -36,4 +36,31 @@ describe('sort module test suite', () => {
     const expected = 'name';
     assert.strictEqual(actual, expected);
   });
+
+  it('get throws if mandatory field is falsy', () => {
+    const source = {
+      everything: {
+        is: {
+          allright: '',
+        },
+      },
+    };
+    const _get = () => sort.get(source, 'everything.is.allright', { mandatory: true });
+    assert.throws(_get);
+  });
+
+  it('get throws if mandatory field is falsy', () => {
+    const tables = [
+      { name: 'master' },
+      { name: 'neo', master: ['detail'] },
+      { name: 'detail', master: ['master'] },
+    ];
+    const expected = [
+      { _name: 'master', _master: undefined },
+      { _name: 'neo', _master: ['detail'] },
+      { _name: 'detail', _master: ['master'] },
+    ];
+    const actual = sort.analyzer(tables);
+    assert.deepEqual(actual, expected);
+  });
 });
