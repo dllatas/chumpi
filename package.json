@@ -18,7 +18,7 @@
     "js-yaml": "^3.12.0"
   },
   "preferGlobal": true,
-  "bin": "./teseo-cli.js",
+  "bin": "./cli.js",
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^5.9.0",
