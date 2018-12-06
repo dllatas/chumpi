@@ -1,5 +1,6 @@
 # Teseo
- 
+[![CircleCI](https://circleci.com/gh/dllatas/teseo/tree/master.svg?style=svg)](https://circleci.com/gh/dllatas/teseo/tree/master)
+
 Teseo reads a directory that contains a relational db schema defined in several config files. 
 
 Each config file defines a table, therefore it has a property that has a name and another optional 
