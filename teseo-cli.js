@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const teseo = require('./index');
 const io = require('./src/io');
 const conversion = require('./src/conversion');
