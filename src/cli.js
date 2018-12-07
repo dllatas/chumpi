@@ -7,7 +7,8 @@ async function cli(input) {
   const options = io.capture(input);
   const result = await teseo(options);
   const dumped = await conversion.execute('dump', options.format, result);
-  await file.write(dumped, options);
+  const { filename } = await file.write(dumped, options);
+  console.info(`Teseo killed the Minotaur! Open your file ${filename}`);
 }
 
 module.exports = cli;
