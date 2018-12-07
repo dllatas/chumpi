@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha --recursive",
-    "lint": "./node_modules/.bin/eslint .",
-    "lint-fix": "./node_modules/.bin/eslint --fix .",
-    "lint-diff-fix": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint --fix $LIST; fi",
-    "lint-diff": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint $LIST; fi",
+    "lint-full": "./node_modules/.bin/eslint .",
+    "lint-full-fix": "./node_modules/.bin/eslint --fix .",
+    "lint": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint $LIST; fi",
+    "lint-fix": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint --fix $LIST; fi",
     "start": "npm install && mkdir -p ./output",
     "build": "rm -rf ./node_modules ./output && npm run start && npm test && npm run lint"
   },
