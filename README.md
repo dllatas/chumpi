@@ -59,8 +59,8 @@ await teseo({
 - Wait for review!
 
 ### Roadmap
+- Set test coverage to 100%
 - Write README for each module
-- Improve CLI 
 - Support more config files
 - Add Babel??? :thinking:
 - Publish it to npm
