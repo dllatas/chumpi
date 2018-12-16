@@ -1,34 +1,44 @@
-const message = require('./message');
+const { message } = require('./message');
 
 const schema = {
   dir: {
     mandatory: true,
     type: 'string',
+    cli: ['-d', '--dir'],
   },
   format: {
     mandatory: true,
     type: 'string',
+    cli: ['-f', '--format'],
   },
   master: {
     mandatory: false,
     type: 'string',
+    cli: ['-m', '--master'],
   },
   name: {
     mandatory: false,
     type: 'string',
+    cli: ['-n', '--name'],
   },
-  write: {
+  output: {
     mandatory: false,
     type: 'string',
+    cli: ['-o', '--output'],
   },
 };
 
-const eq = {
-  d: 'dir',
-  f: 'format',
-  m: 'master',
-  n: 'name',
-  w: 'write',
+const cliOptions = {
+  '-d': 'dir',
+  '--dir': 'dir',
+  '-f': 'format',
+  '--format': 'format',
+  '-n': 'name',
+  '--name': 'name',
+  '-m': 'master',
+  '--master': 'master',
+  '-o': 'output',
+  '--output': 'output',
 };
 
 const display = word => ({
@@ -39,7 +49,6 @@ const display = word => ({
 const specialCases = {
   2: 'help',
   3: 'warning',
-  4: 'simple',
 };
 
 const translateSpecialCase = (word, length, input) => {
@@ -51,15 +60,27 @@ const translateSpecialCase = (word, length, input) => {
       }
       return display(_word);
     },
-    simple: (_word, _length, _input) => {
-      console.log(input);
-      return {
-        dir: _input[_length - 2],
-        format: _input[_length - 1],
-      };
-    },
   };
   return translation[word](word, length, input);
+};
+
+const describe = input => ({
+  element: input,
+  simple: input.substring(0, 1) === '-' && input.substring(1, 2) !== '-' && input.length === 2,
+  paired: input.indexOf('=') !== -1 && input.substring(0, 2) === '--',
+});
+
+const proxy = {
+  simple: (input, element, index) => ({
+    option: cliOptions[element],
+    value: input[index + 1],
+    jump: 2,
+  }),
+  paired: (input, element) => ({
+    option: cliOptions[element.split('=')[0]],
+    value: element.split('=')[1],
+    jump: 1,
+  }),
 };
 
 // Capture input from shell
@@ -72,36 +93,28 @@ const capture = (input) => {
     return translateSpecialCase(specialCases[length], length, input);
   }
 
-  if (length % 2 === 1) {
-    return display('warning');
-  }
+  for (let i = elementsToIgnore; i < length;) {
+    const described = describe(input[i]);
+    const { element, simple, paired } = described;
 
-  // Inspect first argument to choose proper schema
-  const firstChar = input[elementsToIgnore][0];
-  const secondChar = input[elementsToIgnore][1];
-  const singleChar = '-';
-  let specialChar = '';
-
-  if (firstChar === singleChar) {
-    specialChar = '-';
-  }
-
-  if (secondChar === singleChar) {
-    specialChar = '--';
-  }
-
-  if (!specialChar) {
-    return display('help');
-  }
-
-  for (let i = elementsToIgnore; i < length; i += 2) {
-    const option = input[i].split(specialChar)[1];
-    const value = input[i + 1];
-    const qs = specialChar === singleChar ? eq[option] : option;
-
-    if (Object.keys(schema).includes(qs)) {
-      captured[qs] = value;
+    if (!simple && !paired) {
+      return display('warning');
     }
+
+    const type = simple ? 'simple' : 'paired';
+    const _proxy = proxy[type](input, element, i);
+    const { option, value, jump } = _proxy;
+
+    if (!option) {
+      return display('warning');
+    }
+
+    if (!value) {
+      return display('warning');
+    }
+
+    captured[option] = value;
+    i += jump;
   }
 
   return captured;
@@ -112,15 +125,3 @@ module.exports = {
   schema,
   message,
 };
-/*
-  for (let i = elementsToIgnore; i < input.length; i += 1) {
-    const option = input[i].split('=');
-    if (option.length !== elementsInOption) {
-      continue;
-    }
-
-    if (Object.keys(schema).includes(option[0])) {
-      captured[option[0]] = option[1];
-    }
-  }
-  */
