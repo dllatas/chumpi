@@ -1,7 +1,7 @@
 const { describe, it } = require('mocha');
 const path = require('path');
 const { assert } = require('chai');
-const teseo = require('../index');
+const { teseo } = require('../src');
 
 describe('teseo basic cases suite', () => {
   const yaml = 'yaml';
