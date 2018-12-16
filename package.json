@@ -9,8 +9,8 @@
     "lint-full-fix": "./node_modules/.bin/eslint --fix .",
     "lint": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint $LIST; fi",
     "lint-fix": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint --fix $LIST; fi",
-    "start": "npm install && mkdir -p ./output",
-    "build": "rm -rf ./node_modules ./output && npm run start && npm test && npm run lint"
+    "start": "npm install && mkdir -p /tmp/teseo",
+    "build": "rm -rf ./node_modules /tmp/teseo && npm run start && npm test && npm run lint"
   },
   "author": "Daniel Spiers",
   "license": "GNU",
