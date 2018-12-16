@@ -1,34 +1,27 @@
 const message = {
-  'help-direct': `usage: teseo [-d path] [-f value] [-n value] [-m value] [-w path]
-where:
-  -d: path to files (mandatory).
-  -f: file format (mandatory)
-  -n: table name label (optional, default: name)
-  -m: table dependencies label (optional, default: master)
-  -w: output path (optional, default /tmp/teseo)
+  help: `Usage: teseo [OPTION]
 
-usage: teseo [--dir path] [--file value] [--name value] [--master value] [--write path]
-where:
-  --dir: path to files (mandatory).
-  --format: file format (mandatory)
-  --name: table name label (optional, default: name)
-  --master: table dependencies label (optional, default: master)
-  --write: output path (optional, default /tmp/teseo)
+  -d, --dir
+        Path to files (mandatory).
+  -f, --format
+        File format (mandatory)
+  -n, --name
+        Table name label (optional, default: name)
+  -m, --master
+        Table dependencies label (optional, default: master)
+  -o, --output
+        Output path (optional, default /tmp/teseo)
 
-usage: teseo [path] [format]
-where:
-  path: path to files
-  format: file format
+Usage: teseo [OPTION]
 
-display help menu
-  teseo [-h]
-  teseo [--help]`,
+  -h, --help
+        Display help menu`,
+  warning: `Invalid argument(s)!
 
-  help: `Invalid argument(s)!
+Usage: teseo [OPTION]
 
-display help menu
-  teseo [-h]
-  teseo [--help]`,
+  -h, --help
+        Display help menu`,
 };
 
 module.exports = {
