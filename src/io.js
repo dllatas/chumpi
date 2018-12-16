@@ -1,3 +1,5 @@
+const message = require('./message');
+
 const schema = {
   dir: {
     mandatory: true,
@@ -29,60 +31,33 @@ const eq = {
   w: 'write',
 };
 
-const message = {
-  'help-direct': `usage: teseo [-d path] [-f value] [-n value] [-m value] [-w path]
-where:
-  -d: path to files (mandatory).
-  -f: file format (mandatory)
-  -n: table name label (optional, default: name)
-  -m: table dependencies label (optional, default: master)
-  -w: output path (optional, default /tmp/teseo)
-
-usage: teseo [--dir path] [--file value] [--name value] [--master value] [--write path]
-where:
-  --dir: path to files (mandatory).
-  --format: file format (mandatory)
-  --name: table name label (optional, default: name)
-  --master: table dependencies label (optional, default: master)
-  --write: output path (optional, default /tmp/teseo)
-
-usage: teseo path format
-where:
-  path: path to files
-  format: file format
-
-display help menu
-  teseo [-h] [--help]`,
-  help: 'Invalid argument(s). Run teseo [-h] [--help] for help!',
-};
-
-const display = (word) => {
-  console.info(message[word]);
-  process.exit(0);
-};
+const display = word => ({
+  console: true,
+  message: message[word],
+});
 
 const specialCases = {
-  2: 'help-direct',
-  3: 'help',
+  2: 'help',
+  3: 'warning',
   4: 'simple',
 };
 
 const translateSpecialCase = (word, length, input) => {
   const translation = {
-    'help-direct': (_word) => {
-      display(_word);
-    },
-    help: (_word, _length, _input) => {
+    help: _word => display(_word),
+    warning: (_word, _length, _input) => {
       if (['-h', '--help'].includes(_input[_length - 1])) {
-        display('help-direct');
-      } else {
-        display(_word);
+        return display('help');
       }
+      return display(_word);
     },
-    simple: (_word, _length, _input) => ({
-      dir: _input[_length - 2],
-      format: _input[_length - 1],
-    }),
+    simple: (_word, _length, _input) => {
+      console.log(input);
+      return {
+        dir: _input[_length - 2],
+        format: _input[_length - 1],
+      };
+    },
   };
   return translation[word](word, length, input);
 };
@@ -97,9 +72,8 @@ const capture = (input) => {
     return translateSpecialCase(specialCases[length], length, input);
   }
 
-  // Check if length%2 === 1 ... input is wrong
   if (length % 2 === 1) {
-    display('help');
+    return display('warning');
   }
 
   // Inspect first argument to choose proper schema
@@ -117,7 +91,7 @@ const capture = (input) => {
   }
 
   if (!specialChar) {
-    display('help');
+    return display('help');
   }
 
   for (let i = elementsToIgnore; i < length; i += 2) {
@@ -136,6 +110,7 @@ const capture = (input) => {
 module.exports = {
   capture,
   schema,
+  message,
 };
 /*
   for (let i = elementsToIgnore; i < input.length; i += 1) {
