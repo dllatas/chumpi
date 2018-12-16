@@ -27,20 +27,19 @@ Nodejs v10.0.0+ is needed. Teseo has not been tested against earlier versions.
 - format: mandatory. string.
 - master: optional. default = 'master'. string.
 - name: optional. default = 'name'. string.
-- dest: optional. default = 'output'. string.
+- output: optional. default = '/tmp/teseo'. string.
 
 #### CLI
 ```bash
-cd teseo
-node teseo-cli dir=/home/db-schema format=yaml
+teseo --help
 
 ```
 
-#### API
+#### JS
 ```javascript
 const teseo = require('teseo');
 
-await teseo({
+const result = await teseo({
   dir: '/home/db-schema',
   format: 'yaml',
 })
@@ -59,11 +58,9 @@ await teseo({
 - Wait for review!
 
 ### Roadmap
-- Set test coverage to 100%
 - Write README for each module
 - Support more config files
 - Add Babel??? :thinking:
-- Publish it to npm
 
 ### License
 [See License](/LICENSE)
