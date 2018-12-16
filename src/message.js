@@ -23,7 +23,8 @@ where:
 display help menu
   teseo [-h]
   teseo [--help]`,
-  'help': `Invalid argument(s)!
+
+  help: `Invalid argument(s)!
 
 display help menu
   teseo [-h]
@@ -31,5 +32,5 @@ display help menu
 };
 
 module.exports = {
-  message,  
+  message,
 };
