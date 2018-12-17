@@ -1,7 +1,8 @@
 {
   "name": "teseo",
-  "version": "0.0.1",
-  "description": "find its way out of the labyrinth",
+  "version": "0.1.0",
+  "description": "Small utility that helps to find a way out of a relational db dependency labyrinth",
+  "keywords": ["relational-database", "db", "nodejs", "cli", "yaml"],
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha --recursive",
@@ -14,6 +15,10 @@
   },
   "author": "Daniel Spiers",
   "license": "GNU",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dllatas/teseo"
+  },
   "dependencies": {
     "js-yaml": "^3.12.0"
   },
