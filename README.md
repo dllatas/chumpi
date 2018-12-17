@@ -16,9 +16,16 @@ Labyrinth, similar to the library finding the order of the files.
 
 Nodejs v10.0.0+ is needed. Teseo has not been tested against earlier versions.
 
+#### Git
 1. `git clone https://github.com/dllatas/teseo.git`
 2. `cd teseo`
 3. `npm start`
+
+#### npm
+
+Global flag needed so it can be used as a CLI tool without the need for `npm link`. Discard global flag if it will be used as a module. 
+
+1. `npm i -g teseo`
 
 ### Usage
 
