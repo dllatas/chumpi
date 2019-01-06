@@ -2,7 +2,13 @@
   "name": "teseo",
   "version": "0.1.0",
   "description": "Small utility that helps to find a way out of a relational db dependency labyrinth",
-  "keywords": ["relational-database", "db", "nodejs", "cli", "yaml"],
+  "keywords": [
+    "relational-database",
+    "db",
+    "nodejs",
+    "cli",
+    "yaml"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha --recursive",
