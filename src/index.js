@@ -1,7 +1,11 @@
-const teseo = require('./teseo');
-const cli = require('./cli');
+const conversion = require('./conversion');
+const file = require('./file');
+const io = require('./io');
+const validation = require('./validation');
 
 module.exports = {
-  teseo,
-  cli,
+  conversion,
+  file,
+  io,
+  validation,
 };

@@ -9,7 +9,7 @@ const readFilePromise = util.promisify(fs.readFile);
 const writeFilePromise = util.promisify(fs.writeFile);
 const removeFilePromise = util.promisify(fs.unlink);
 
-const DEFAULT_DEST = '/tmp/teseo';
+const DEFAULT_DEST = '/tmp/belt';
 // Read filenames from the dir option
 const list = async (dir) => {
   let files = await readDirPromise(dir);
