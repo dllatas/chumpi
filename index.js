@@ -1,3 +1,3 @@
-const belt = require('./src');
+const chumpi = require('./src');
 
-module.exports = belt;
+module.exports = chumpi;

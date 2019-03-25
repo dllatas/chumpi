@@ -98,21 +98,21 @@ describe('io functions test suite', () => {
   });
 
   it('show warning when arguments are incomplete', () => {
-    const input = ['node', 'teseo', '-d', '/tmp/belt', '-f', 'yaml', '-n'];
+    const input = ['node', 'teseo', '-d', '/tmp/chumpi', '-f', 'yaml', '-n'];
     const captured = io.capture(input, message, cliOptions);
     assert.isTrue(captured.console);
     assert.strictEqual(captured.message, message.warning);
   });
 
   it('show warning when arguments are bad formatted', () => {
-    const input = ['node', 'teseo', 'd', '/tmp/belt', '-f', 'yaml'];
+    const input = ['node', 'teseo', 'd', '/tmp/chumpi', '-f', 'yaml'];
     const captured = io.capture(input, message, cliOptions);
     assert.isTrue(captured.console);
     assert.strictEqual(captured.message, message.warning);
   });
 
   it('show warning when option is falsy', () => {
-    const input = ['node', 'teseo', '-a', '/tmp/belt', '-f', 'yaml'];
+    const input = ['node', 'teseo', '-a', '/tmp/chumpi', '-f', 'yaml'];
     const captured = io.capture(input, message, cliOptions);
     assert.isTrue(captured.console);
     assert.strictEqual(captured.message, message.warning);

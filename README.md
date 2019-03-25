@@ -1,10 +1,10 @@
-# Belt 
+# Chumpi 
 
 ### Installation
 
 #### Git
-1. `git clone https://github.com/dllatas/belt.git`
-2. `cd belt`
+1. `git clone https://github.com/dllatas/chumpi.git`
+2. `cd chumpi`
 3. `npm start`
 
 #### npm
