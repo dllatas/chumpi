@@ -1,13 +1,13 @@
 {
-  "name": "teseo",
+  "name": "belt",
   "version": "0.1.0",
-  "description": "Small utility that helps to find a way out of a relational db dependency labyrinth",
+  "description": "A set of utils!",
   "keywords": [
-    "relational-database",
-    "db",
-    "nodejs",
-    "cli",
-    "yaml"
+    "utils",
+    "conversion",
+    "file",
+    "io",
+    "validation"
   ],
   "main": "index.js",
   "scripts": {
@@ -16,17 +16,17 @@
     "lint-full-fix": "./node_modules/.bin/eslint --fix .",
     "lint": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint $LIST; fi",
     "lint-fix": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint --fix $LIST; fi",
-    "start": "npm install && mkdir -p /tmp/teseo",
-    "build": "rm -rf ./node_modules /tmp/teseo && npm run start && npm test && npm run lint"
+    "start": "npm install && mkdir -p /tmp/belt",
+    "build": "rm -rf ./node_modules /tmp/belt && npm run start && npm test && npm run lint"
   },
   "author": "Daniel Spiers",
   "license": "GNU",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dllatas/teseo"
+    "url": "https://github.com/dllatas/belt"
   },
   "dependencies": {
-    "js-yaml": "^3.12.0"
+    "js-yaml": "^3.13.0"
   },
   "preferGlobal": true,
   "bin": "./cli.js",
@@ -37,6 +37,6 @@
     "eslint-plugin-import": "^2.14.0",
     "husky": "^1.2.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.1.0"
+    "nyc": "^13.3.0"
   }
 }

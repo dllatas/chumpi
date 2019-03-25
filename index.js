@@ -1,3 +1,3 @@
-const { teseo } = require('./src');
+const belt = require('./src');
 
-module.exports = teseo;
+module.exports = belt;
