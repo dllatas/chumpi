@@ -1,7 +1,6 @@
 const { describe, it } = require('mocha');
 const { assert } = require('chai');
 const validation = require('../src/validation');
-const io = require('../src/io');
 
 const schema = {
   dir: {
