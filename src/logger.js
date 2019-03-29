@@ -1,7 +1,7 @@
 const { createLogger, format, transports } = require('winston');
 
 const logger = (service) => {
-  createLogger({
+  const createdLogger = createLogger({
     level: 'info',
     format: format.combine(
       format.timestamp(),
@@ -17,13 +17,15 @@ const logger = (service) => {
   });
 
   if (process.env.NODE_ENV === 'development') {
-    logger.add(new transports.Console({
+    createdLogger.add(new transports.Console({
       format: format.combine(
         format.colorize(),
         format.simple(),
       ),
     }));
   }
+
+  return createdLogger;
 };
 
 
