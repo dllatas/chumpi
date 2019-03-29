@@ -11,7 +11,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha --recursive",
+    "test": "NODE_ENV=test nyc mocha --recursive",
     "lint-full": "./node_modules/.bin/eslint .",
     "lint-full-fix": "./node_modules/.bin/eslint --fix .",
     "lint": "LIST=`git diff-index --name-only --diff-filter=d HEAD | grep .*\\.js | grep -v json`; if [ \"$LIST\" ]; then ./node_modules/.bin/eslint $LIST; fi",
@@ -26,7 +26,8 @@
     "url": "https://github.com/dllatas/chumpi"
   },
   "dependencies": {
-    "js-yaml": "^3.13.0"
+    "js-yaml": "^3.13.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
